@@ -38,6 +38,7 @@ exports.schema = buildSchema(`
         getUsers: [User]
         getListings: [Listing]
         getBookings: [Booking]
+        login(username: String!, password: String!): String
     }
 
     type Mutation {
@@ -51,7 +52,6 @@ exports.schema = buildSchema(`
         ): User
 
         addListing(
-            listing_id: String!
             listing_title: String!
             description: String!
             street: String!
@@ -63,9 +63,7 @@ exports.schema = buildSchema(`
         ) : Listing
 
         addBooking(
-            booking_id: String!
             listing_id: String!
-            booking_date: String
             booking_start: String!
             booking_end: String!
             username: String!
